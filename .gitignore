@@ -11,10 +11,12 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 .idea
+# 双星 ** 表示匹配任意中间目录
 **/mvnw
 **/mvnw.cmd
 **/.mvn
 **/.gitignore
 **/target/
+# 单星 * 表示匹配多个任意字符
 *.iml
 */*.iml
