@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * @Version 1.0
  */
 
-@MapperScan("com.beautiful.mall01.mbg.mapper")
+@MapperScan({"com.beautiful.mall01.mbg.mapper","com.beautiful.mall01.dao"})
 @Configuration
 public class MyBatisConfig {
 }

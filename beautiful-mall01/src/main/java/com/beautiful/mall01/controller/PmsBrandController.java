@@ -9,6 +9,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,12 +28,14 @@ public class PmsBrandController {
     @Autowired
     PmsBrandService pmsBrandService;
 
+    @PreAuthorize("hasAuthority('pms:brand:read')")
     @ApiOperation("查询所有品牌列表")
     @GetMapping("/listAll")
     public CommonResult<List<PmsBrand>> listAllBrand(){
         return CommonResult.success(pmsBrandService.listAllBrand());
     }
 
+    @PreAuthorize("hasAuthority('pms:brand:read')")
     @ApiOperation("按照页数查询品牌列表")
     @GetMapping("/list")
     public CommonResult<CommonPage<PmsBrand>> listBrand(@RequestParam("pageNum") int pageNum,@RequestParam("pageSize") int pageSize){
@@ -40,6 +43,7 @@ public class PmsBrandController {
         return CommonResult.success(CommonPage.restPage(list));
     }
 
+    @PreAuthorize("hasAuthority('pms:brand:create')")
     @ApiOperation("添加品牌")
     @PostMapping("/create")
     public CommonResult<PmsBrand> createBrand(@RequestBody PmsBrand pmsBrand){
@@ -53,6 +57,7 @@ public class PmsBrandController {
         }
     }
 
+    @PreAuthorize("hasAuthority('pms:brand:update')")
     @ApiOperation("更新品牌")
     @PostMapping("/update/{id}")
     public CommonResult<PmsBrand> updateBrand(@PathVariable("id") Long id,@RequestBody PmsBrand pmsBrand){
@@ -66,6 +71,7 @@ public class PmsBrandController {
         }
     }
 
+    @PreAuthorize("hasAuthority('pms:brand:delete')")
     @ApiOperation("根据ID删除品牌")
     @DeleteMapping("/delete/{id}")
     public CommonResult deleteBrand(@PathVariable("id") Long id){
@@ -79,6 +85,7 @@ public class PmsBrandController {
         }
     }
 
+    @PreAuthorize("hasAuthority('pms:brand:read')")
     @ApiOperation("根据ID查询品牌")
     @GetMapping("/getBrand/{id}")
     public CommonResult<PmsBrand> getBrand(@PathVariable("id") Long id){
