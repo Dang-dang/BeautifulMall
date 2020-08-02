@@ -1,6 +1,7 @@
 package com.beautiful.mall01.component;
 
 import com.beautiful.mall01.common.utils.JwtTokenUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Slf4j
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Autowired
@@ -34,8 +36,11 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
         String header = httpServletRequest.getHeader(this.tokenHeader);
         if(header!=null && header.startsWith(this.tokenHead)){
+            log.info("tokenHead-->"+tokenHead+"-->length-->"+tokenHead.length());
             String token = header.substring(tokenHead.length());
+            log.info("token===>"+token);
             String userNameFromToken = jwtTokenUtil.getUserNameFromToken(token);
+            log.info("username===>"+userNameFromToken);
             if(userNameFromToken!=null && SecurityContextHolder.getContext().getAuthentication()==null){
                 UserDetails userDetails = userDetailsService.loadUserByUsername(userNameFromToken);
                 if(jwtTokenUtil.validateToken(token,userDetails)){

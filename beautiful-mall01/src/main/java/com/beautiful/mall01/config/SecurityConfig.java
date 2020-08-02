@@ -62,8 +62,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers(HttpMethod.OPTIONS)//options请求
                 .permitAll()
-//                .antMatchers("/**")
-//                .permitAll()
+                .antMatchers("/**")
+                .permitAll()
                 .anyRequest()//除上面的请求都需要认证
                 .authenticated();
 

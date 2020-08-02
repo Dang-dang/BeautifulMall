@@ -19,7 +19,19 @@ spring:
         min-idle: 0
     timeout: 3000ms
     password: root
-
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+#这里有个坑，会报 None of the configured nodes are available 异常，
+#需要在docker的elasticsearch的配置文件elasticsearch.yml中添加 network.host: 0.0.0.0
+# http.host: 0.0.0.0 保证http连接的9200端口正常
+# network.host: 0.0.0.0 保证java连接的9300端口正常
+      cluster-nodes: 172.16.80.131:9310 #es链接地址及端口
+      cluster-name: elasticsearch #es集群的名称
+  elasticsearch:   #控制台一直报elasticsearch 健康检查失败，加上这个可以解决
+    rest:
+      uris: ["http://172.16.80.131:9210"]
 
 mybatis:
   mapper-locations:
@@ -40,3 +52,8 @@ jwt:
   secret: asdfghjkl #JWT加密解密使用的密钥
   expiration: 3600 #JWT的过期时间（60*60）
   tokenHead: Bearer #JWT负载中拿到开头
+
+#lombok slf4j 日志级别
+logging:
+  level:
+    root: info

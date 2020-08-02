@@ -2,6 +2,7 @@ package com.beautiful.mall01.dao;
 
 import com.beautiful.mall01.mbg.model.UmsPermission;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
