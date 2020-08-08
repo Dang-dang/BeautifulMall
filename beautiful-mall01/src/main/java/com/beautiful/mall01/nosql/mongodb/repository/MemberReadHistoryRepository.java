@@ -14,4 +14,6 @@ public interface MemberReadHistoryRepository extends MongoRepository<MemberReadH
 
     @Query("{'memberId' : ?0}")
     List<MemberReadHistory> findByMemberId(Long id);
+
+
 }

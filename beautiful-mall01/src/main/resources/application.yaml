@@ -36,7 +36,13 @@ spring:
   elasticsearch:   #控制台一直报elasticsearch 健康检查失败，加上这个可以解决
     rest:
       uris: ["http://172.16.80.131:9210"]
-
+  rabbitmq:
+    host: localhost
+    port: 5672
+    virtual-host: /mall
+    username: mall
+    password: mall
+    publisher-confirms: true #如果对异步消息需要回调必须设置为 true
 
 mybatis:
   mapper-locations:
