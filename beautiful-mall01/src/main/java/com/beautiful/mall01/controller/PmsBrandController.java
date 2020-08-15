@@ -35,7 +35,7 @@ public class PmsBrandController {
         return CommonResult.success(pmsBrandService.listAllBrand());
     }
 
-    @PreAuthorize("hasAuthority('pms:brand:read')")
+//    @PreAuthorize("hasAuthority('pms:brand:read')")
     @ApiOperation("按照页数查询品牌列表")
     @GetMapping("/list")
     public CommonResult<CommonPage<PmsBrand>> listBrand(@RequestParam("pageNum") int pageNum,@RequestParam("pageSize") int pageSize){

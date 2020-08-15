@@ -33,6 +33,7 @@ spring:
       database: mall-port
       host: localhost
       port: 27017
+      auto-index-creation: false
   elasticsearch:   #控制台一直报elasticsearch 健康检查失败，加上这个可以解决
     rest:
       uris: ["http://172.16.80.131:9210"]
