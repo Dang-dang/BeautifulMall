@@ -2,9 +2,11 @@ package com.beautiful.mall01.component;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
+import cn.hutool.json.JSONUtil;
 import com.beautiful.mall01.dto.WebLog;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import net.logstash.logback.marker.Markers;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -77,6 +79,13 @@ public class WebLogAspect {
         webLog.setUri(request.getRequestURI());
         webLog.setUrl(request.getRequestURL().toString());
         log.info("webLog==>{}",webLog);
+        Map<String,Object> logMap=new HashMap<>();
+        logMap.put("url",webLog.getUrl());
+        logMap.put("method",webLog.getMethod());
+        logMap.put("parameter",webLog.getParameter());
+        logMap.put("spendTime",webLog.getSpendTime());
+        logMap.put("description",webLog.getDescription());
+        log.info(Markers.appendEntries(logMap),JSONUtil.parse(webLog).toString());
         return result;
     }
 
