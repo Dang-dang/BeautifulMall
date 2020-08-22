@@ -11,6 +11,7 @@
 
     <modules>
         <module>beautiful-mall01</module>
+        <module>eureka-server</module>
+        <module>eureka-client</module>
     </modules>
-
 </project>
