@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/user")
 @Slf4j
@@ -39,5 +41,11 @@ public class UserController {
     public CommonResult<User> getUser(@PathVariable("id") Long id){
         log.info("get-->>");
         return new CommonResult<>(userService.getUser(id));
+    }
+
+    @GetMapping("/getUserByIds")
+    public CommonResult<List<User>> getUserByIds(@RequestParam("ids") List<Long> ids){
+        log.info("getUserByIds-->>");
+        return new CommonResult<>(userService.getUserByIds(ids));
     }
 }

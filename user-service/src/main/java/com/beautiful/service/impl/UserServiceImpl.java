@@ -53,4 +53,11 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
+    @Override
+    public List<User> getUserByIds(List<Long> ids) {
+        return userList.stream().filter(item->ids.contains(item.getId())).collect(Collectors.toList());
+    }
+
+
 }

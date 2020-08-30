@@ -16,5 +16,6 @@
         <module>user-service</module>
         <module>ribbon-service</module>
         <module>common</module>
+        <module>hystrix-service</module>
     </modules>
 </project>

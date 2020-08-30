@@ -2,6 +2,8 @@ package com.beautiful.service;
 
 import com.beautiful.domain.User;
 
+import java.util.List;
+
 public interface UserService {
 
     int create(User user);
@@ -12,5 +14,5 @@ public interface UserService {
 
     User getUser(Long id);
 
-
+    List<User> getUserByIds(List<Long> ids);
 }
