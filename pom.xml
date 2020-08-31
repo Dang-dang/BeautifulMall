@@ -17,5 +17,6 @@
         <module>ribbon-service</module>
         <module>common</module>
         <module>hystrix-service</module>
+        <module>hystrix-dashboard</module>
     </modules>
 </project>

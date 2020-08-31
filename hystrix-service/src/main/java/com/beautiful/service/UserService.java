@@ -51,7 +51,7 @@ public class UserService {
 
 
     @HystrixCommand(fallbackMethod = "getDefaultUser",
-        commandKey = "getUSerCommand",
+        commandKey = "getUserCommand",
         groupKey = "getUserGroup",
         threadPoolKey = "getUserThreadPool")
     public CommonResult getUserCommand(Long id){

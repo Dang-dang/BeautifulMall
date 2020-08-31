@@ -13,3 +13,11 @@ eureka:
 
 service-url:
   user-service: http://user-service
+
+
+#一开始使用这个暴露监控端点，发现没用，dashboard会报Unable to connect to Command Metric Stream 所以不用添加，而是需要向容器中添加一个ServletRegistrationBean，具体见config中配置类
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: 'hystrix.stream' #暴露hystrix监控端点
