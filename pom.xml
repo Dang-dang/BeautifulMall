@@ -20,5 +20,6 @@
         <module>hystrix-dashboard</module>
         <module>turbine-service</module>
         <module>feign-service</module>
+        <module>zuul-proxy</module>
     </modules>
 </project>
