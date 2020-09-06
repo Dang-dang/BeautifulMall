@@ -1,0 +1,22 @@
+server:
+  port: 8701
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://dang:123456@localhost:8001/eureka/
+spring:
+  application:
+    name: feign-service
+
+feign:
+  hystrix:
+    enabled: true #在Feign中开启Hystrix
+ribbon:
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+logging:
+  level:
+    com.beautiful.service.UserService: debug
