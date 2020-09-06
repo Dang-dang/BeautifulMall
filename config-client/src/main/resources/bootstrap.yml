@@ -1,0 +1,24 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      profile: dev #配置文件后缀名
+      label: master #分支名称
+      uri: http://localhost:8901 #配置中心地址
+      name: config-client #配置文件名
+      #如果 config-server 中 没有配置 search-paths 则找的是git 仓库根目录下的config-client-dev.yml文件
+      #如果 config-server 中 配置了 search-paths：'{application}' 则找的是git 仓库中config-client/config-client-dev.yml文件
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://dang:123456@localhost:8001/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'refresh'
