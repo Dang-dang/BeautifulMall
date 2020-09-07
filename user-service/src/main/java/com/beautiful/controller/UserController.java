@@ -43,9 +43,15 @@ public class UserController {
         return new CommonResult<>(userService.getUser(id));
     }
 
-    @GetMapping("/getUserByIds")
+    //请求路径如果是getUserByIds时，末尾和参数ids重合会导致传过来的ids参数识别不到
+    @GetMapping("/getUserByIdsList")
     public CommonResult<List<User>> getUserByIds(@RequestParam("ids") List<Long> ids){
-        log.info("getUserByIds-->>");
+        log.info("getUserByIds-->>"+ids);
         return new CommonResult<>(userService.getUserByIds(ids));
+    }
+
+    @GetMapping("/test")
+    public void test(@RequestParam("ids") List<Long> name){
+        log.info("getUserByIds-->>"+name);
     }
 }

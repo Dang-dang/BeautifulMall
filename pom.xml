@@ -24,5 +24,6 @@
         <module>config-service</module>
         <module>config-client</module>
         <module>config-security-server</module>
+        <module>api-gateway</module>
     </modules>
 </project>
