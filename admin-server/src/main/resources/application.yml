@@ -1,0 +1,19 @@
+server:
+  port: 9301
+spring:
+  application:
+    name: admin-server
+  security:
+    user:
+      name: dang
+      password: 123456
+  boot: # 不显示admin-server的监控信息
+    admin:
+      discovery:
+        ignored-services: ${spring.application.name}
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://dang:123456@localhost:8001/eureka/
